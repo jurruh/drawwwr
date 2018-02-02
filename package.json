@@ -1,0 +1,19 @@
+{
+  "name": "drawwwr",
+  "version": "0.0.1",
+  "description": "We do not have time for readme's add hackathons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jurruh/Drawwwr.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jurruh/Drawwwr/issues"
+  },
+  "homepage": "https://github.com/jurruh/Drawwwr#readme"
+}
