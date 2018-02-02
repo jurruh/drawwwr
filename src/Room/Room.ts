@@ -6,7 +6,8 @@ export class Room {
     participants: Array<Participant>;
 
     constructor(){
-        this.id = Math.floor((Math.random() * 1000) + 1);      
+        this.id = Math.floor((Math.random() * 1000) + 1);
+        this.participants = new Array<Participant>();
     }
 
     addParticipant(participant:Participant){

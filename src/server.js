@@ -17,6 +17,7 @@ io.on('connection', function (socket) {
         var particpant = new Participant_1.Participant(socket);
         room.addParticipant(particpant);
         socket.emit('joinRoom', { roomNumber: room.id });
+        console.log(room.id);
     });
     socket.on('joinRoom', function (data) {
         rooms.forEach(function (room) {
@@ -25,6 +26,7 @@ io.on('connection', function (socket) {
                 room.addParticipant(particpant);
             }
         });
+        console.log('User joined room: ' + data.id);
     });
     socket.on('disconnect', function () {
         console.log('Disconnected: ' + socket.id);
