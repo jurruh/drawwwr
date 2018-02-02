@@ -4,8 +4,8 @@ body {
 }
 
 body {
-  -webkit-animation: background 5s cubic-bezier(1,0,0,1) infinite;
-  animation: background 5s cubic-bezier(1,0,0,1) infinite;  
+  -webkit-animation: background 10s ease-in-out infinite;
+  animation: background 10s ease-in-out infinite; 
 }
 
 .text-align-center {
@@ -15,6 +15,61 @@ body {
   flex-direction: column;
   justify-content: center;
   text-align: center
+}
+
+input {
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li{
+  color: #000;
+}
+
+.room h2 {
+  padding-top: 20px;
+  font-size: 60px;
+}
+
+.room li {
+  font-size: 32px;
+}
+
+.game {
+  padding: 20px;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.elements {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+.clear-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: gold;
+  border: 0;
 }
 
 
