@@ -10,7 +10,10 @@ app.listen(3000, function () {
 });
 var server = http_1.createServer(app);
 var io = socketIo(server);
-io.on('connected', function () {
-    console.log("test");
+io.on('connection', function (socket) {
+    console.log('Connected: ' + socket.id);
+    socket.on('disconnect', function () {
+        console.log('Disconnected: ' + socket.id);
+    });
 });
 //# sourceMappingURL=server.js.map
