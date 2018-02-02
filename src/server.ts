@@ -1,25 +1,28 @@
 import * as express from 'express';
 import * as socketIo from 'socket.io';
-import {createServer} from "http";
+import { createServer } from "http";
 
-const app = express();
+const   app = express(),
+    port = 3000,
+    server = createServer(app),
+    io = socketIo.listen(server);
 
-app.use(express.static('public'))
+let allClients = '';
 
-app.listen(3000, () => {
-    console.log('Example app listening on port 3000!')
-});
+app.use(express.static('public'));
 
-
-const server = createServer(app);
-const io = socketIo(server);
+server.listen(port);
 
 io.on('connection', (socket: any) => {
-    console.log('Connected: ' + socket.id);
+    console.log('Client connected: ' + socket.id);
+
+    socket.on('joinRoom', function(response) {
+        allClients.push(response);
+        socket.join(response.room);
+        io.in(response.room).emit( 'watchers', { 'currWatchers': clientNum('/', response.room) } );
+    });
 
     socket.on('disconnect', () => {
-        console.log('Disconnected: ' + socket.id);
+        console.log('Client disconnected: ' + socket.id);
     });
 });
-
-
