@@ -1,3 +1,9 @@
 export class Participant {
-    id:number;
+
+    socket:any;
+
+    constructor(socket:any){
+        this.socket = socket;
+    }
+
 }

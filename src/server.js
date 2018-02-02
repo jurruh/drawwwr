@@ -9,11 +9,6 @@ app.use(express.static('public'));
 server.listen(port);
 io.on('connection', function (socket) {
     console.log('Client connected: ' + socket.id);
-    socket.on('joinRoom', function (response) {
-        allClients.push(response);
-        socket.join(response.room);
-        io["in"](response.room).emit('watchers', { 'currWatchers': clientNum('/', response.room) });
-    });
     socket.on('disconnect', function () {
         console.log('Client disconnected: ' + socket.id);
     });

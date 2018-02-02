@@ -1,7 +1,8 @@
 "use strict";
 exports.__esModule = true;
 var Participant = (function () {
-    function Participant() {
+    function Participant(socket) {
+        this.socket = socket;
     }
     return Participant;
 }());
