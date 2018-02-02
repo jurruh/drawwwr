@@ -1,0 +1,11 @@
+{
+  "name": "Drawwwr",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/jurruh/Drawwwr.git",
+  "author": "jurruh <jurrevriesen@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
