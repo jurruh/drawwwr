@@ -11,13 +11,14 @@ app.use(express.static('public'));
 server.listen(port);
 var rooms = Array();
 io.on('connection', function (socket) {
-    socket.on('createRoom', function () {
+    socket.on('createRoom', function (data) {
         var room = new Room_1.Room();
         rooms.push(room);
-        var particpant = new Participant_1.Participant(socket, "ADMIN");
+        console.log(data);
+        var particpant = new Participant_1.Participant(socket, data.username);
         room.addParticipant(particpant);
         console.log("Room id" + room.id);
-        socket.emit('joinRoom', { roomNumber: room.id });
+        socket.emit('joinRoom', { roomNumber: room.id, word: room.word, participants: [{ name: data.username }] });
     });
     socket.on('joinRoom', function (data) {
         console.log(data);
@@ -28,10 +29,13 @@ io.on('connection', function (socket) {
                 console.log(room.participants);
                 var participants_1 = new Array();
                 room.participants.forEach(function (p) {
+                    if (p.socket.id != socket.id) {
+                        p.socket.emit('userJoined', { username: data.username });
+                    }
                     participants_1.push({ name: p.name });
                 });
                 socket.emit('joinRoom', { participants: participants_1 });
-                socket.to(room.id).emit('joinRoom', { participants: participants_1 });
+                socket.to(room.id).emit('joinRoom', { participants: participants_1, roomNumber: room.id, word: room.word });
             }
         });
         console.log("Room group showing");

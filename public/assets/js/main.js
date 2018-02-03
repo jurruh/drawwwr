@@ -4,9 +4,13 @@ $('.addUsername').hide();
 
 const socket = io.connect('http://localhost:3000');
 
+let newRoom = false;
+
 $('.createRoom').on('click', function(e) {
     e.preventDefault();
-    socket.emit('createRoom');
+    $('.preUsername').hide();
+    $('.addUsername').show();
+    newRoom = true;
 });
 
 $('.enterUsername').on('click', function(e) {
@@ -27,6 +31,9 @@ socket.on('joinRoom', function(data) {
     var joinedRoomnumber = data.roomNumber;
     $('.addUsername__roomnumber span').html(joinedRoomnumber);
 
+    $('.room-placeholder').html(data.roomNumber);
+    $('.word-placeholder').html(data.word);
+
     if(data.participants != undefined){
         for (var i = 0; i < data.participants.length; i ++) {
             $('#usernames').append('<li>' + data.participants[i].name + '</li>');
@@ -38,9 +45,13 @@ socket.on('joinRoom', function(data) {
 
 $('.joinRoom').on('click', function(e) {
     e.preventDefault();
-    var roomId = $('[name=roomnumber]').val();
     var username = $('.username').val();
-    socket.emit('joinRoom', { 'id': roomId, 'username': username });
+    if(newRoom){
+        socket.emit('createRoom', {'username':username});
+    }else{
+        var roomId = $('[name=roomnumber]').val();
+        socket.emit('joinRoom', { 'id': roomId, 'username': username });
+    }
 });
 
 
@@ -56,4 +67,8 @@ socket.on('passWaitingroom', function(data) {
 $('.enterDrawing').on('click', function(e) {
     e.preventDefault();
 
+});
+
+socket.on('userJoined', function(data){
+    $('#usernames').append('<li>' + data.username + '</li>');
 });
