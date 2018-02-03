@@ -67,6 +67,9 @@ socket.on('passWaitingroom', function(data) {
 $('.enterDrawing').on('click', function(e) {
     e.preventDefault();
 
+    $('.waitingroom').hide();
+    $('.gameroom').show();
+    InitThis();
 });
 
 socket.on('userJoined', function(data){
