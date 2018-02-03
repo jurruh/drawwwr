@@ -13,7 +13,6 @@ h4, h5 {
 }
 
 h4 {
-    color: #fff;
 }
 
 hr {
@@ -73,6 +72,7 @@ p { margin: 0; }
 }
 
 #live-chat h4 {
+	color:white;
 	font-size: 12px;
 }
 

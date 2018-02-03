@@ -1,11 +1,21 @@
 html,
 body {
   height: 100%;
+  text-align: center;
+  font-family: 'Rammetto One', cursive;
 }
 
 body {
   -webkit-animation: background 10s ease-in-out infinite;
   animation: background 10s ease-in-out infinite; 
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Rammetto One', cursive !important;
+}
+
+.uk-button {
+  width: 220px;
 }
 
 .text-align-center {
@@ -106,8 +116,22 @@ li{
   100% { background-color: #f99; }
 }
 
+.result-room {
+  padding: 50px;
+}
+
 .result-room img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  background-color: white;
+}
+
+.waitingroom {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
 }

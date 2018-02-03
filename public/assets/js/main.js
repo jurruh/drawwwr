@@ -3,7 +3,7 @@
 $('.addUsername').hide();
 $('#live-chat').hide();
 
-const socket = io.connect('http://localhost:3000');
+const socket = io.connect('');
 
 var newRoom = false;
 
@@ -117,7 +117,7 @@ socket.on('imageFinished', function(data) {
     image.src = data.base64;
     $(image).data('position', data.position);
     $('.result-room').append(image);
-    jQuery('.result-room img').height(jQuery(window).height() / jQuery('.result-room img').length)
+    jQuery('.result-room img').height((jQuery(window).height() - 100) / jQuery('.result-room img').length)
 });
 
 socket.on('alert', function(data) {
