@@ -53,8 +53,7 @@ li{
 
 .game {
   padding: 20px;
-  width: 100vw;
-  height: 100vh;
+  overflow: hidden;
   position: relative;
 }
 
@@ -71,7 +70,6 @@ li{
   background-color: gold;
   border: 0;
 }
-
 
 @-webkit-keyframes background {
   0% { background-color: #f99; }

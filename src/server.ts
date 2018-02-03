@@ -26,6 +26,7 @@ io.on('connection', (socket: any) => {
         room.addParticipant(particpant);
 
         socket.emit('joinRoom', {roomNumber : room.id});
+        console.log(room.id);
     });
 
     socket.on('joinRoom', (data:any) => {
