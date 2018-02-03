@@ -33,7 +33,7 @@ io.on('connection', (socket: any) => {
     socket.on('joinRoom', (data:any) => {
         console.log(data);
         rooms.forEach((room) => {
-            if(room.id = data.id){
+            if(room.id == data.id){
                 let particpant = new Participant(socket, data.username);
                 room.addParticipant(particpant);
                 console.log(room.participants);

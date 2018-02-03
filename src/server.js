@@ -22,7 +22,7 @@ io.on('connection', function (socket) {
     socket.on('joinRoom', function (data) {
         console.log(data);
         rooms.forEach(function (room) {
-            if (room.id = data.id) {
+            if (room.id == data.id) {
                 var particpant = new Participant_1.Participant(socket, data.username);
                 room.addParticipant(particpant);
                 console.log(room.participants);
