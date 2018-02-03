@@ -6,19 +6,9 @@ var ctx;
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
     document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
-    
-    function resizeCanvas() {
-        ctx.canvas.width = window.innerWidth - 40;
-        ctx.canvas.height = window.innerHeight - 40;
 
-        /**
-         * Your drawings need to be inside this function otherwise they will be reset when 
-         * you resize the browser window and the canvas goes will be cleared.
-         */
-        Draw(); 
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas, false);
+    ctx.canvas.width = window.visualViewport.width - 40;
+    ctx.canvas.height = window.visualViewport.height - 40;
 
     $('#myCanvas').on('mousedown touchstart',(function (e) {
         mousePressed = true;
@@ -48,10 +38,6 @@ function InitThis() {
     $('#myCanvas').on('mouseup touchend',(function (e) {
         mousePressed = false;
     }));
-
-    $('#myCanvas').mouseleave(function (e) {
-        mousePressed = false;
-    });
 }
 
 function Draw(x, y, isDown) {
@@ -67,9 +53,10 @@ function Draw(x, y, isDown) {
     }
     lastX = x; lastY = y;
 }
-	
+
 function clearArea() {
     // Use the identity matrix while clearing the canvas
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
+

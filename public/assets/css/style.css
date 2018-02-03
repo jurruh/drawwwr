@@ -17,8 +17,20 @@ body {
   text-align: center
 }
 
+.logo {
+  width: 300px;
+}
+
 input {
   text-align: center;
+}
+
+.input {
+  width: 300px;
+}
+
+button {
+  width: 180px;
 }
 
 h1,
@@ -59,16 +71,25 @@ li{
 
 .elements {
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 40px;
+  right: 40px;
 }
 
 .clear-button {
-  width: 30px;
-  height: 30px;
+  top: 40px;
+  width: 60px;
+  right: 0px;
+  position: absolute;
+  height: 60px;
   border-radius: 50%;
   background-color: gold;
   border: 0;
+  display: block;
+}
+
+.send-button {
+  top: 120px;
+  background-color: #9f9;
 }
 
 @-webkit-keyframes background {
