@@ -16,6 +16,6 @@
   },
   "scripts": {
     "watch": "tsc --watch",
-    "start": "node ./src/server.js"
+    "start": "tsc && node ./src/server.js"
   }
 }
