@@ -12,16 +12,23 @@ var Room = (function () {
         Room.positions[this.id]++;
         participant.position = Room.positions[this.id];
         this.participants.push(participant);
+        this.participants.forEach(function (p) {
+            if (p.base64 != undefined) {
+                participant.socket.emit('imageFinished', { base64: p.base64, position: p.position });
+            }
+        });
         participant.socket.on("showMessage", function (data) {
             _this.emit("printMessage", data);
+        });
+        participant.socket.on("submitImage", function (data) {
+            participant.base64 = data.base64;
+            _this.emit('imageFinished', { base64: data.base64, position: data.position });
         });
     };
     Room.prototype.emit = function (name, data) {
         this.participants.forEach(function (p) {
+            console.log('name');
             p.socket.emit(name, data);
-        });
-        this.participants.socket.on("submitImage", function (data) {
-            console.log(data.base64);
         });
     };
     Room.words = ["Fiets", "Auto", "Laptop"];

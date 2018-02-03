@@ -49,7 +49,7 @@ io.on('connection', (socket: any) => {
                     participants.push({name:p.name});
                 });
 
-                socket.emit('joinRoom', {participants:participants} )
+                socket.emit('joinRoom', {participants:participants, roomNumber : room.id, word:room.word} )
             }
         });
         console.log("Room group showing");

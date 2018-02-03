@@ -34,7 +34,7 @@ io.on('connection', function (socket) {
                     }
                     participants_1.push({ name: p.name });
                 });
-                socket.emit('joinRoom', { participants: participants_1 });
+                socket.emit('joinRoom', { participants: participants_1, roomNumber: room.id, word: room.word });
             }
         });
         console.log("Room group showing");

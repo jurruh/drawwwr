@@ -34,6 +34,8 @@ socket.on('joinRoom', function(data) {
     $('.room-placeholder').html(data.roomNumber);
     $('.word-placeholder').html(data.word);
 
+    console.log(data);
+
     if(data.participants != undefined){
         for (var i = 0; i < data.participants.length; i ++) {
             $('#usernames').append('<li>' + data.participants[i].name + '</li>');
@@ -114,7 +116,19 @@ $('.input-room').keyup(function(e){
 $('.send-button').on('click', function(e){
     e.preventDefault();
 
+    console.log('bleh');
+
     var canvas = document.getElementById('myCanvas');
 
     socket.emit("submitImage", {base64:canvas.toDataURL()});
+
+    $('.gameroom').hide();
+    $('.result-room').show();
+});
+
+socket.on('imageFinished', function(data){
+    var image = new Image();
+    image.src = data.base64;
+    $(image).data('position', data.position);
+    $('.result-room').append(image);
 });

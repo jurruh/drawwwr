@@ -21,26 +21,27 @@ export class Room {
         participant.position = Room.positions[this.id];
         this.participants.push(participant);
 
+        this.participants.forEach((p) => {
+            if(p.base64!=undefined){
+                participant.socket.emit('imageFinished', {base64:p.base64, position:p.position});
+            }
+        });
+
         participant.socket.on("showMessage", (data : any) => {
             this.emit("printMessage", data)
         });
-    }
 
+        participant.socket.on("submitImage", (data:any) => {
+            participant.base64 = data.base64;
+            this.emit('imageFinished', {base64:data.base64, position:data.position});
+        });
+    }
 
     emit(name:string, data:any){
         this.participants.forEach((p) => {
+            console.log('name');
             p.socket.emit(name,data);
         });
-
-        this.participants.socket.on("submitImage", (data:any) => {
-            console.log(data.base64);
-        });
     }
-    // emitRoom(test : Participant) {
-    //     this.participants.forEach((room) => {
-    //         if(room.socket == test.socket) {
-    //             socket.emit('joinRoom', { 'test':'testdata' });
-    //         }
-    //     });
-    // }
+
 }
