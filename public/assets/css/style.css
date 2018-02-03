@@ -1,0 +1,142 @@
+html,
+body {
+  height: 100%;
+  text-align: center;
+  font-family: 'Rammetto One', cursive;
+}
+
+body {
+  -webkit-animation: background 10s ease-in-out infinite;
+  animation: background 10s ease-in-out infinite; 
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Rammetto One', cursive !important;
+}
+
+.uk-button {
+  width: 220px;
+}
+
+.text-align-center {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center
+}
+
+.logo {
+  width: 300px;
+}
+
+input {
+  text-align: center;
+}
+
+.input {
+  width: 300px;
+}
+
+button {
+  width: 180px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li{
+  color: #000;
+}
+
+.room h2 {
+  padding-top: 20px;
+  font-size: 60px;
+}
+
+.room li {
+  font-size: 32px;
+}
+
+.game {
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.elements {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+}
+
+.clear-button {
+  top: 40px;
+  width: 60px;
+  right: 0px;
+  position: absolute;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  border: 0;
+  display: block;
+}
+
+.send-button {
+  top: 120px;
+  background-color: #00ab00;
+}
+
+@-webkit-keyframes background {
+  0% { background-color: #f99; }
+  33% { background-color: #9f9; }  
+  67% { background-color: #99f; }
+  100% { background-color: #f99; }
+}
+
+@keyframes background {
+  0% { background-color: #f99; }
+  33% { background-color: #9f9; }  
+  67% { background-color: #99f; }
+  100% { background-color: #f99; }
+}
+
+.result-room {
+  padding: 50px;
+}
+
+.result-room img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+.waitingroom {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+}
+
+#myCanvas {
+  width: 50vw;
+  height: 50vw;
+}

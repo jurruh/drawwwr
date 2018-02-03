@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drawwwr</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/uikit.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/uikit-rtl.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/room.css">
+    <script src="assets/js/vendor/uikit.min.js"></script>
+    <script src="assets/js/vendor/uikit-icons.min.js"></script>
+</head>
+<body class="room">
+
+
+    <!-- Test -->
+    <div id="live-chat">
+        <header class="clearfix">
+            <a href="#" class="chat-close">x</a>
+            <h4>John Doe</h4>
+            <span class="chat-message-counter">3</span>
+        </header>
+        <div class="chat">
+            <div class="chat-history">
+                <div class="chat-message clearfix">
+                        <span class="chat-time">13:35</span>
+                        <h5>John Doe</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
+                </div> <!-- end chat-message -->
+                <hr>
+                <div class="chat-message clearfix">
+                        <span class="chat-time">13:37</span>
+                        <h5>Marco Biedermann</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, nulla accusamus magni vel debitis numquam qui tempora rem voluptatem delectus!</p>
+                </div> <!-- end chat-message -->
+                <hr>
+                <div class="chat-message clearfix">
+                        <span class="chat-time">13:38</span>
+                        <h5>John Doe</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                </div> <!-- end chat-message -->
+                <hr>
+            </div> <!-- end chat-history -->
+            <p class="chat-feedback">Your partner is typing…</p>
+            <form action="#" method="post">
+                <fieldset>
+                    <input type="text" class="input-room" placeholder="Type your message…" autofocus>
+                    <input type="hidden">
+                </fieldset>
+            </form>
+        </div> <!-- end chat -->
+    </div> <!-- end live-chat -->
+</body>
+<script>
+    const users = ["Yigit", "Jurre", "Mustafa"];
+
+    function makeUL(){
+            
+        for (i = 0; i < users.length; i += 1){
+        document.getElementById('usernames').innerHTML += '<li>' + users[i] + '</li>';
+        }
+    }
+    makeUL();
+    </script>
+<script>
+    (function() {
+
+    $('#live-chat header').on('click', function() {
+
+        $('.chat').slideToggle(300, 'swing');
+        $('.chat-message-counter').fadeToggle(300, 'swing');
+
+    });
+
+    $('.chat-close').on('click', function(e) {
+
+        e.preventDefault();
+        $('#live-chat').fadeOut(300);
+
+    });
+
+    }) ();
+</script>
+</html>

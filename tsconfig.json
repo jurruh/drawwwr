@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true
+    },
+    "files": [
+        "src/server.ts",
+        "src/Room/Room.ts",
+        "src/Participant/Participant.ts"
+    ]
+}
