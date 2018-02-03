@@ -105,3 +105,9 @@ li{
   67% { background-color: #99f; }
   100% { background-color: #f99; }
 }
+
+.result-room img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
