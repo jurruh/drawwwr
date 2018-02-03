@@ -6,6 +6,7 @@ export class Room {
     participants: Array<Participant>;
 
     constructor(){
+        this.participants = new Array<Participant>();
         this.id = Math.floor((Math.random() * 1000) + 1);      
     }
 

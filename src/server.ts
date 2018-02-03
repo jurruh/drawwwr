@@ -31,8 +31,10 @@ io.on('connection', (socket: any) => {
     socket.on('joinRoom', (data:any) => {
         rooms.forEach((room) => {
             if(room.id = data.id){
-                let particpant = new Participant(socket);
+                let particpant = new Participant(socket, data.name);
                 room.addParticipant(particpant);
+
+                socket.emit('joinRoom', {participants:room.participants} )
             }
         });
     });
