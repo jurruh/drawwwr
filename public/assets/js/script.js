@@ -38,6 +38,9 @@ function InitThis() {
     $('#myCanvas').on('mouseup touchend',(function (e) {
         mousePressed = false;
     }));
+    $('#myCanvas').on('mouseleave touchstop',(function (e) {
+        mousePressed = false;
+    }));
 }
 
 function Draw(x, y, isDown) {
@@ -60,3 +63,9 @@ function clearArea() {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
+
+function downloadImage()
+{
+    var image = ctx.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); 
+    window.location.href=image;
+}
