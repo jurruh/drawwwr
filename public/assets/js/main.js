@@ -28,7 +28,7 @@ socket.on('userJoined', function(data) {
 
 $('.joinRoom').on('click', function(e) {
     e.preventDefault();
-    var roomId = $('.roomnumber').val();
+    var roomId = $('[name=roomnumber]').val();
     var username = $('.username').val();
     socket.emit('joinRoom', { 'id': roomId, 'username': username });
 });

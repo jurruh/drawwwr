@@ -22,20 +22,29 @@ io.on('connection', (socket: any) => {
         let room = new Room();
         rooms.push(room);
 
-        let particpant = new Participant(socket);
+        let particpant = new Participant(socket, "ADMIN");
         room.addParticipant(particpant);
 
+        console.log("Room id" + room.id);
+
         socket.emit('joinRoom', {roomNumber : room.id});
-        console.log(room.id);
     });
 
     socket.on('joinRoom', (data:any) => {
+        console.log(data);
         rooms.forEach((room) => {
             if(room.id = data.id){
-                let particpant = new Participant(socket, data.name);
+                let particpant = new Participant(socket, data.username);
                 room.addParticipant(particpant);
+                console.log(room.participants);
 
-                socket.emit('joinRoom', {participants:room.participants} )
+                let participants = new Array();
+
+                room.participants.forEach((p:Participant) => {
+                    participants.push({name:p.name});
+                });
+
+                socket.emit('joinRoom', {participants:participants} )
             }
         });
     });

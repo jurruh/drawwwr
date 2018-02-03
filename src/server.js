@@ -14,17 +14,23 @@ io.on('connection', function (socket) {
     socket.on('createRoom', function () {
         var room = new Room_1.Room();
         rooms.push(room);
-        var particpant = new Participant_1.Participant(socket);
+        var particpant = new Participant_1.Participant(socket, "ADMIN");
         room.addParticipant(particpant);
+        console.log("Room id" + room.id);
         socket.emit('joinRoom', { roomNumber: room.id });
-        console.log(room.id);
     });
     socket.on('joinRoom', function (data) {
+        console.log(data);
         rooms.forEach(function (room) {
             if (room.id = data.id) {
-                var particpant = new Participant_1.Participant(socket, data.name);
+                var particpant = new Participant_1.Participant(socket, data.username);
                 room.addParticipant(particpant);
-                socket.emit('joinRoom', { participants: room.participants });
+                console.log(room.participants);
+                var participants_1 = new Array();
+                room.participants.forEach(function (p) {
+                    participants_1.push({ name: p.name });
+                });
+                socket.emit('joinRoom', { participants: participants_1 });
             }
         });
     });
