@@ -1,1 +1,1 @@
-{"version":3,"file":"Participant.js","sourceRoot":"","sources":["Participant.ts"],"names":[],"mappings":";;AAAA;IAKI,qBAAY,MAAU,EAAE,IAAW;QAC/B,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;QACrB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;IACrB,CAAC;IAEL,kBAAC;AAAD,CAAC,AAVD,IAUC;AAVY,kCAAW"}
+{"version":3,"file":"Participant.js","sourceRoot":"","sources":["Participant.ts"],"names":[],"mappings":";;AAAA;IAMI,qBAAY,MAAU,EAAE,IAAW;QAC/B,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;QACrB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;IACrB,CAAC;IAEL,kBAAC;AAAD,CAAC,AAXD,IAWC;AAXY,kCAAW"}

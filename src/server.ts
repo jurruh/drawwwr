@@ -56,7 +56,6 @@ io.on('connection', (socket: any) => {
         console.log("Room group showing");
 
         socket.broadcast.emit('', );
-
     });
 
     socket.on('disconnect', () => {

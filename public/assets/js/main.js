@@ -75,3 +75,11 @@ $('.enterDrawing').on('click', function(e) {
 socket.on('userJoined', function(data){
     $('#usernames').append('<li>' + data.username + '</li>');
 });
+
+$('.send-button').on('click', function(e){
+    e.preventDefault();
+
+    var canvas = document.getElementById('myCanvas');
+
+    socket.emit("submitImage", {base64:canvas.toDataURL()});
+})
