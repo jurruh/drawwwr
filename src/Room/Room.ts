@@ -1,7 +1,16 @@
 import { Participant } from "../Participant/Participant";
 
 export class Room {
-    static words:string[] = ["Fiets", "Auto", "Laptop"];
+    static words:string[] = [
+        "Fiets",
+        "Auto",
+        "Laptop",
+        "Huis",
+        "Mens",
+        "Eifeltoren",
+        "Spongebob",
+        "Denneboom"
+    ];
 
     static positions:any = {};
 

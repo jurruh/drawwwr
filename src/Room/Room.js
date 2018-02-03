@@ -31,7 +31,16 @@ var Room = (function () {
             p.socket.emit(name, data);
         });
     };
-    Room.words = ["Fiets", "Auto", "Laptop"];
+    Room.words = [
+        "Fiets",
+        "Auto",
+        "Laptop",
+        "Huis",
+        "Mens",
+        "Eifeltoren",
+        "Spongebob",
+        "Denneboom"
+    ];
     Room.positions = {};
     return Room;
 }());

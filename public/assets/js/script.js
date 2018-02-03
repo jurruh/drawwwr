@@ -64,8 +64,7 @@ function clearArea() {
 }
 
 
-function downloadImage()
-{
+function downloadImage() {
     var image = ctx.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); 
     window.location.href=image;
 }

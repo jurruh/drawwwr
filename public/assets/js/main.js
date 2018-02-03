@@ -1,6 +1,7 @@
 'use strict';
 
 $('.addUsername').hide();
+$('#live-chat').hide();
 
 const socket = io.connect('http://localhost:3000');
 
@@ -24,25 +25,18 @@ $('.enterUsername').on('click', function(e) {
 });
 
 socket.on('joinRoom', function(data) {
-    console.log('hij komt bij join room');
     $('.addUsername').hide();
     $('.waitingroom').show();
-    console.log(data);
+    $('#live-chat').show();
     var joinedRoomnumber = data.roomNumber;
     $('.addUsername__roomnumber span').html(joinedRoomnumber);
-
     $('.room-placeholder').html(data.roomNumber);
     $('.word-placeholder').html(data.word);
-
-    console.log(data);
-
     if(data.participants != undefined){
         for (var i = 0; i < data.participants.length; i ++) {
             $('#usernames').append('<li>' + data.participants[i].name + '</li>');
         }
     }
-
-
 });
 
 $('.joinRoom').on('click', function(e) {
@@ -50,7 +44,7 @@ $('.joinRoom').on('click', function(e) {
     var username = $('.username').val();
     if(newRoom){
         socket.emit('createRoom', {'username':username});
-    }else{
+    } else{
         var roomId = $('[name=roomnumber]').val();
         socket.emit('joinRoom', { 'id': roomId, 'username': username });
     }
@@ -68,13 +62,12 @@ socket.on('passWaitingroom', function(data) {
 
 $('.enterDrawing').on('click', function(e) {
     e.preventDefault();
-
     $('.waitingroom').hide();
     $('.gameroom').show();
     InitThis();
 });
 
-socket.on('userJoined', function(data){
+socket.on('userJoined', function(data) {
     $('#usernames').append('<li>' + data.username + '</li>');
 });
 
@@ -89,10 +82,9 @@ socket.on('printMessage', function(data) {
     );
 });
 
-$('.input-room').bind("enterKey",function(e){
+$('.input-room').bind("enterKey",function(e) {
     e.preventDefault();
     var roomId = $('.waitingroom__roomnumber span').html();
-    console.log(roomId);
     var time = new Date();
     var userinput = $('.input-room').val();
     $('.chat-history').append(
@@ -106,29 +98,27 @@ $('.input-room').bind("enterKey",function(e){
     $('.input-room').val('');
 });
 
-$('.input-room').keyup(function(e){
-    if(e.keyCode == 13)
-    {
+$('.input-room').keyup(function(e) {
+    if(e.keyCode == 13) {
         $(this).trigger("enterKey");
     }
 });
 
-$('.send-button').on('click', function(e){
+$('.send-button').on('click', function(e) {
     e.preventDefault();
-
-    console.log('bleh');
-
     var canvas = document.getElementById('myCanvas');
-
     socket.emit("submitImage", {base64:canvas.toDataURL()});
-
     $('.gameroom').hide();
     $('.result-room').show();
 });
 
-socket.on('imageFinished', function(data){
+socket.on('imageFinished', function(data) {
     var image = new Image();
     image.src = data.base64;
     $(image).data('position', data.position);
     $('.result-room').append(image);
+});
+
+socket.on('alert', function(data) {
+    alert(data.error);
 });

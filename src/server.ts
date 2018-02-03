@@ -9,8 +9,6 @@ const   app = express(),
         server = createServer(app),
         io = socketIo.listen(server);
 
-let allClients = '';
-
 app.use(express.static('public'));
 
 server.listen(port);
@@ -21,14 +19,8 @@ io.on('connection', (socket: any) => {
     socket.on('createRoom', (data:any) => {
         let room = new Room();
         rooms.push(room);
-
-        console.log(data);
-
         let particpant = new Participant(socket, data.username);
         room.addParticipant(particpant);
-
-        console.log("Room id" + room.id);
-
         socket.emit('joinRoom', {roomNumber : room.id, word:room.word, participants: [{name:data.username}]});
     });
 
@@ -38,26 +30,19 @@ io.on('connection', (socket: any) => {
             if(room.id == data.id){
                 let particpant = new Participant(socket, data.username);
                 room.addParticipant(particpant);
-                console.log(room.participants);
-
                 let participants = new Array();
-
                 room.participants.forEach((p:Participant) => {
                     if(p.socket.id != socket.id){
                         p.socket.emit('userJoined', {username:data.username});
                     }
                     participants.push({name:p.name});
                 });
-
                 socket.emit('joinRoom', {participants:participants, roomNumber : room.id, word:room.word} )
             }
         });
-        console.log("Room group showing");
     });
 
     socket.on('showMessage', (data:any) => {
-        console.log(data);
-
         socket.emit('printMessage', data);
     });
 

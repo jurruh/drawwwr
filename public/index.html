@@ -18,29 +18,30 @@
     <div class="preUsername">
         <div class="text-align-center uk-width-12">
             <img class="logo" src="assets/images/logo.png" alt="Logo">
-            <input class="uk-input input roomNumber" type="number" name="roomnumber" placeholder="Voer een kamernummer in...">
+            <input class="uk-input input roomNumber" type="number" name="roomnumber" placeholder="Enter a roomnumber...">
             <div class="uk-padding-small">
                 <button class="uk-button uk-button-primary enterUsername">Next step</button>
             </div>
-            <button class="uk-button uk-button-secondary createRoom">Nieuwe kamer</button>
+            <button class="uk-button uk-button-secondary createRoom">Create room</button>
         </div>
     </div>
 
     <div class="addUsername">
         <div class="text-align-center uk-width-12">
-            <h1 class="addUsername__roomnumber">Kamernummer: <span>...</span></h1>
-            <input class="uk-input input username" type="text" name="roomnumber" placeholder="Gebruikersnaam">
+            <input class="uk-input input username" type="text" name="roomnumber" placeholder="Enter your username">
             <div class="uk-padding-small">
-                <button class="uk-button uk-button-primary joinRoom">Enter</button>
+                <button class="uk-button uk-button-primary joinRoom">Enter room</button>
             </div>
         </div>
     </div>
 
     <div class="waitingroom">
         <div class="uk-width-12 uk-padding">
-            <h2 class="waitingroom__roomnumber">Kamernummer: <span class="room-placeholder"></span></h2>
-            <h2 class="waitingroom__subject">Onderwerp: <span class="word-placeholder"></span></h2>
-            <ul id="usernames" class="uk-list uk-padding uk-padding-remove-horizontal">
+            <h2 class="waitingroom__roomnumber" style="font-size: 25px;color: #222222;">Kamernummer: <span class="room-placeholder"></span></h2>
+            <h2 class="waitingroom__subject" style="color: #222222;">Onderwerp: <span class="word-placeholder"></span></h2>
+            <br/>
+            <h4>Usernames:</h4>
+            <ul style="padding: 0;margin: 0;" id="usernames" class="uk-list uk-padding uk-padding-remove-horizontal">
 
             </ul>
             <button class="uk-button uk-button-primary enterDrawing">Enter</button>
@@ -54,7 +55,6 @@
                 <div class="chat-history">
                     <p>No messages has been send. Be the fist one</p>
                 </div> <!-- end chat-history -->
-                <p class="chat-feedback">Your partner is typing…</p>
                 <fieldset>
                     <input type="text" class="input-room" placeholder="Type your message…" autofocus>
                     <input type="hidden">
