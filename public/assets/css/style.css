@@ -135,3 +135,8 @@ li{
     text-align: center;
     height: 100vh;
 }
+
+#canvas {
+  width: 50vw;
+  height: 50vw;
+}
