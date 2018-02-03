@@ -75,3 +75,38 @@ $('.enterDrawing').on('click', function(e) {
 socket.on('userJoined', function(data){
     $('#usernames').append('<li>' + data.username + '</li>');
 });
+
+socket.on('printMessage', function(data) {
+    console.log(data);
+    $('.chat-history').append(
+        "<div class='chat-message clearfix'>" +
+        "<span class='chat-time'> " + data.time +"</span>" +
+        "<h5>USername1</h5>" +
+        "<p>"+ data.userinput +"</p>" +
+        "</div><hr>"
+    );
+});
+
+$('.input-room').bind("enterKey",function(e){
+    e.preventDefault();
+    var roomId = $('.waitingroom__roomnumber span').html();
+    console.log(roomId);
+    var time = new Date();
+    var userinput = $('.input-room').val();
+    $('.chat-history').append(
+        "<div class='chat-message clearfix'>" +
+        "<span class='chat-time'> " + time.getHours() + " " + time.getMinutes() +"</span>" +
+        "<h5>USername</h5>" +
+        "<p>"+ userinput +"</p>" +
+        "</div><hr>"
+    );
+    socket.emit('showMessage', {'time': time, 'userinput': userinput, 'id': roomId});
+    $('.input-room').val('');
+});
+
+$('.input-room').keyup(function(e){
+    if(e.keyCode == 13)
+    {
+        $(this).trigger("enterKey");
+    }
+});

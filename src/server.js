@@ -35,11 +35,13 @@ io.on('connection', function (socket) {
                     participants_1.push({ name: p.name });
                 });
                 socket.emit('joinRoom', { participants: participants_1 });
-                socket.to(room.id).emit('joinRoom', { participants: participants_1, roomNumber: room.id, word: room.word });
             }
         });
         console.log("Room group showing");
-        socket.broadcast.emit('');
+    });
+    socket.on('showMessage', function (data) {
+        console.log(data);
+        socket.emit('printMessage', data);
     });
     socket.on('disconnect', function () {
         console.log('Disconnected: ' + socket.id);

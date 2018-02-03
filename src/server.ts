@@ -50,13 +50,18 @@ io.on('connection', (socket: any) => {
                 });
 
                 socket.emit('joinRoom', {participants:participants} )
-                socket.to(room.id).emit('joinRoom', { participants:participants, roomNumber:room.id, word:room.word });
             }
         });
         console.log("Room group showing");
 
-        socket.broadcast.emit('', );
+        // socket.broadcast.emit('', );
 
+    });
+
+    socket.on('showMessage', (data:any) => {
+        console.log(data);
+
+        socket.emit('printMessage', data);
     });
 
     socket.on('disconnect', () => {

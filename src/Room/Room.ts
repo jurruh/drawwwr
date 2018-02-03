@@ -15,5 +15,23 @@ export class Room {
 
     addParticipant(participant:Participant){
         this.participants.push(participant);
+
+        participant.socket.on("showMessage", (data : any) => {
+            this.emit("printMessage", data)
+        });
     }
+
+
+    emit(name:string, data:any){
+        this.participants.forEach((p) => {
+            p.socket.emit(name,data);
+        })
+    }
+    // emitRoom(test : Participant) {
+    //     this.participants.forEach((room) => {
+    //         if(room.socket == test.socket) {
+    //             socket.emit('joinRoom', { 'test':'testdata' });
+    //         }
+    //     });
+    // }
 }
