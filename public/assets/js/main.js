@@ -4,7 +4,7 @@ $('.addUsername').hide();
 
 const socket = io.connect('http://localhost:3000');
 
-let newRoom = false;
+var newRoom = false;
 
 $('.createRoom').on('click', function(e) {
     e.preventDefault();
@@ -109,4 +109,12 @@ $('.input-room').keyup(function(e){
     {
         $(this).trigger("enterKey");
     }
+});
+
+$('.send-button').on('click', function(e){
+    e.preventDefault();
+
+    var canvas = document.getElementById('myCanvas');
+
+    socket.emit("submitImage", {base64:canvas.toDataURL()});
 });
