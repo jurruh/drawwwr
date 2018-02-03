@@ -9,6 +9,16 @@ $('.createRoom').on('click', function(e) {
     socket.emit('createRoom');
 });
 
+$('.enterUsername').on('click', function(e) {
+    e.preventDefault();
+    if ($('.roomNumber').val().length > 0) {
+        $('.preUsername').hide();
+        $('.addUsername').show();
+    } else {
+        alert('Enter roomnumber');
+    }
+});
+
 socket.on('userJoined', function(data) {
     $('.preUsername').hide();
     $('.addUsername').show();
