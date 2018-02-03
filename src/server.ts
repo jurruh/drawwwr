@@ -36,8 +36,6 @@ io.on('connection', (socket: any) => {
                 room.addParticipant(particpant);
             }
         });
-
-        console.log('User joined room: ' + data.id);
     });
 
     socket.on('disconnect', () => {

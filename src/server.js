@@ -26,7 +26,6 @@ io.on('connection', function (socket) {
                 room.addParticipant(particpant);
             }
         });
-        console.log('User joined room: ' + data.id);
     });
     socket.on('disconnect', function () {
         console.log('Disconnected: ' + socket.id);
