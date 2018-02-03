@@ -17,16 +17,14 @@ io.on('connection', function (socket) {
         var particpant = new Participant_1.Participant(socket);
         room.addParticipant(particpant);
         socket.emit('joinRoom', { roomNumber: room.id });
-<<<<<<< HEAD
-=======
         console.log(room.id);
->>>>>>> e74e2cc6fab294d4d5afec71d03c4a1bceeb5877
     });
     socket.on('joinRoom', function (data) {
         rooms.forEach(function (room) {
             if (room.id = data.id) {
-                var particpant = new Participant_1.Participant(socket);
+                var particpant = new Participant_1.Participant(socket, data.name);
                 room.addParticipant(particpant);
+                socket.emit('joinRoom', { participants: room.participants });
             }
         });
     });
