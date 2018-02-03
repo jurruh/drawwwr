@@ -5,10 +5,11 @@ var ctx;
 
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
-
+    document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
+    
     function resizeCanvas() {
-        ctx.canvas.width = window.innerWidth;
-        ctx.canvas.height = window.innerHeight;
+        ctx.canvas.width = window.innerWidth - 40;
+        ctx.canvas.height = window.innerHeight - 40;
 
         /**
          * Your drawings need to be inside this function otherwise they will be reset when 
@@ -19,21 +20,36 @@ function InitThis() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas, false);
 
-    $('#myCanvas').mousedown(function (e) {
+    $('#myCanvas').on('mousedown touchstart',(function (e) {
         mousePressed = true;
-        Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
-    });
-
-    $('#myCanvas').mousemove(function (e) {
-        if (mousePressed) {
-            Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
+        var pos_x, pos_y, touch;
+        touch = void 0;
+        if (e.originalEvent.touches) {
+        touch = e.originalEvent.touches[0];
         }
-    });
+        pos_x = e.pageX || touch.pageX;
+        pos_y = e.pageY || touch.pageY;
+        Draw(pos_x - $(this).offset().left, pos_y - $(this).offset().top, false);
+    }));
 
-    $('#myCanvas').mouseup(function (e) {
+    $('#myCanvas').on('mousemove touchmove',(function (e) {
+        if (mousePressed) {
+            var pos_x, pos_y, touch;
+            touch = void 0;
+            if (e.originalEvent.touches) {
+            touch = e.originalEvent.touches[0];
+            }
+            pos_x = e.pageX || touch.pageX;
+            pos_y = e.pageY || touch.pageY;
+            Draw(pos_x - $(this).offset().left, pos_y - $(this).offset().top, true);
+        }
+    }));
+
+    $('#myCanvas').on('mouseup touchend',(function (e) {
         mousePressed = false;
-    });
-	    $('#myCanvas').mouseleave(function (e) {
+    }));
+
+    $('#myCanvas').mouseleave(function (e) {
         mousePressed = false;
     });
 }
