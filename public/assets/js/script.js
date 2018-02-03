@@ -6,10 +6,9 @@ var ctx;
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
     document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
-
-    ctx.canvas.width = window.visualViewport.width - 40;
-    ctx.canvas.height = window.visualViewport.height - 40;
-
+    // //
+    ctx.canvas.width = $('#myCanvas').width();
+    ctx.canvas.height = $('#myCanvas').height();
     $('#myCanvas').on('mousedown touchstart',(function (e) {
         mousePressed = true;
         var pos_x, pos_y, touch;

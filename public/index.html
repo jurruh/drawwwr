@@ -40,13 +40,11 @@
 
     <div class="waitingroom">
         <div class="uk-width-12 uk-padding">
-            <h2 class="waitingroom__roomnumber" style="font-size: 25px;color: #222222;">Kamernummer: <span class="room-placeholder"></span></h2>
-            <h2 class="waitingroom__subject" style="color: #222222;">Onderwerp: <span class="word-placeholder"></span></h2>
+            <h2 class="waitingroom__roomnumber" style="font-size: 20px;color: #222222;">Kamernummer: <span class="room-placeholder"></span></h2>
+            <h2 class="waitingroom__subject" style="font-size: 20px;color: #222222;">Onderwerp: <span class="word-placeholder"></span></h2>
             <br/>
             <h4>Personen in de groep:</h4>
-            <ul style="padding: 0;margin: 0;" id="usernames" class="uk-list uk-padding uk-padding-remove-horizontal">
-
-            </ul>
+            <ul style="padding: 0;margin: 0;" id="usernames" class="uk-list uk-padding uk-padding-remove-horizontal"></ul>
             <br/>
             <button class="uk-button uk-button-primary enterDrawing">Start drawing</button>
         </div>
@@ -57,7 +55,7 @@
             </header>
             <div class="chat">
                 <div class="chat-history">
-                    <p>Er zijn nog geen berichten verstuurd wees de eerste</p>
+                    <p>There hasn't been send any messages, be the first!</p>
                 </div> <!-- end chat-history -->
                 <fieldset>
                     <input type="text" class="input-room" placeholder="Type your message…" autofocus>
@@ -85,24 +83,21 @@
                 <option value="11">11</option>
             </select>
             Kleur : <select id="selColor">
-                <option value="black" style="background-color:black; color:white;">Zwart</option>
-                <option value="blue" style="background-color:blue; color:white;" selected="selected">Blauw</option>
-                <option value="red" style="background-color:red; color:white;">Rood</option>
-                <option value="green" style="background-color:green; color:black;">Groen</option>
-                <option value="yellow" style="background-color:yellow; color:black;">Geel</option>
-                <option value="gray"style="background-color:gray; color:black;">Grijs</option>
-                <option value="white" style="background-color:white; color:black;">Wit</option>
+                <option value="black" style="background-color:black; color:white;">Black</option>
+                <option value="blue" style="background-color:blue; color:white;" selected="selected">Blue</option>
+                <option value="red" style="background-color:red; color:white;">Red</option>
+                <option value="green" style="background-color:green; color:black;">Green</option>
+                <option value="yellow" style="background-color:yellow; color:black;">Yellow</option>
+                <option value="gray"style="background-color:gray; color:black;">Grey</option>
+                <option value="white" style="background-color:white; color:black;">White</option>
             </select>
             </div>
         </div>
     </div>
-    <div class="result-room" style="display: none;">
-    
-    </div>    
-    </body>
+    <div class="result-room" style="display: none;"></div>
     <script>
         (function() {
-    
+            $('.chat').slideToggle(300, 'swing');
         $('#live-chat header').on('click', function() {
     
             $('.chat').slideToggle(300, 'swing');

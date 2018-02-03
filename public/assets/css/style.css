@@ -92,14 +92,14 @@ li{
   position: absolute;
   height: 60px;
   border-radius: 50%;
-  background-color: gold;
+  background-color: #ff0000;
   border: 0;
   display: block;
 }
 
 .send-button {
   top: 120px;
-  background-color: #9f9;
+  background-color: #00ab00;
 }
 
 @-webkit-keyframes background {
@@ -136,7 +136,7 @@ li{
     height: 100vh;
 }
 
-#canvas {
+#myCanvas {
   width: 50vw;
   height: 50vw;
 }

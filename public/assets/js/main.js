@@ -2,6 +2,7 @@
 
 $('.addUsername').hide();
 $('#live-chat').hide();
+$('.waitingroom').hide();
 
 const socket = io.connect('');
 
@@ -87,13 +88,6 @@ $('.input-room').bind("enterKey",function(e) {
     var roomId = $('.waitingroom__roomnumber span').html();
     var time = new Date();
     var userinput = $('.input-room').val();
-    // $('.chat-history').append(
-    //     "<div class='chat-message clearfix'>" +
-    //     "<span class='chat-time'> " + time.getHours() + " " + time.getMinutes() +"</span>" +
-    //     "<h5>USername</h5>" +
-    //     "<p>"+ userinput +"</p>" +
-    //     "</div><hr>"
-    // );
     socket.emit('showMessage', {'time': time, 'userinput': userinput, 'id': roomId});
     $('.input-room').val('');
 });
