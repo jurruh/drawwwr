@@ -45,8 +45,13 @@ io.on('connection', (socket: any) => {
                 });
 
                 socket.emit('joinRoom', {participants:participants} )
+                socket.to(room.id).emit('joinRoom', { participants:participants });
             }
         });
+        console.log("Room group showing");
+
+        socket.broadcast.emit('', );
+
     });
 
     socket.on('disconnect', () => {
