@@ -18,6 +18,7 @@ var Room = (function () {
             }
         });
         participant.socket.on("showMessage", function (data) {
+            data.username = participant.name;
             _this.emit("printMessage", data);
         });
         participant.socket.on("submitImage", function (data) {

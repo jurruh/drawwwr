@@ -37,6 +37,7 @@ export class Room {
         });
 
         participant.socket.on("showMessage", (data : any) => {
+            data.username = participant.name;
             this.emit("printMessage", data)
         });
 

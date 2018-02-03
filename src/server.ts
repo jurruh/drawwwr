@@ -42,10 +42,6 @@ io.on('connection', (socket: any) => {
         });
     });
 
-    socket.on('showMessage', (data:any) => {
-        socket.emit('printMessage', data);
-    });
-
     socket.on('disconnect', () => {
         console.log('Disconnected: ' + socket.id);
     });

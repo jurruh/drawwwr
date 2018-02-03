@@ -34,9 +34,6 @@ io.on('connection', function (socket) {
             }
         });
     });
-    socket.on('showMessage', function (data) {
-        socket.emit('printMessage', data);
-    });
     socket.on('disconnect', function () {
         console.log('Disconnected: ' + socket.id);
     });

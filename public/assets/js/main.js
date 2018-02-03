@@ -76,7 +76,7 @@ socket.on('printMessage', function(data) {
     $('.chat-history').append(
         "<div class='chat-message clearfix'>" +
         "<span class='chat-time'> " + data.time +"</span>" +
-        "<h5>USername1</h5>" +
+        "<h5>"+data.username+"</h5>" +
         "<p>"+ data.userinput +"</p>" +
         "</div><hr>"
     );
@@ -87,13 +87,13 @@ $('.input-room').bind("enterKey",function(e) {
     var roomId = $('.waitingroom__roomnumber span').html();
     var time = new Date();
     var userinput = $('.input-room').val();
-    $('.chat-history').append(
-        "<div class='chat-message clearfix'>" +
-        "<span class='chat-time'> " + time.getHours() + " " + time.getMinutes() +"</span>" +
-        "<h5>USername</h5>" +
-        "<p>"+ userinput +"</p>" +
-        "</div><hr>"
-    );
+    // $('.chat-history').append(
+    //     "<div class='chat-message clearfix'>" +
+    //     "<span class='chat-time'> " + time.getHours() + " " + time.getMinutes() +"</span>" +
+    //     "<h5>USername</h5>" +
+    //     "<p>"+ userinput +"</p>" +
+    //     "</div><hr>"
+    // );
     socket.emit('showMessage', {'time': time, 'userinput': userinput, 'id': roomId});
     $('.input-room').val('');
 });
